@@ -16,6 +16,9 @@ import Show from "components/Appointment/Show";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
+import Saving from "components/Appointment/Saving";
+import ErrorSaving from "components/Appointment/ErrorSaving";
+
 
 
 
@@ -164,7 +167,14 @@ storiesOf("InterviewerListItem", module)
       onCancel={action("onCancel")}
     />
   ))
+  .add("Saving", () => <Saving message="Saving" />)
   .add("Status", () => <Status message="Deleting" />)
+  .add("ErrorSaving", () => (
+    <ErrorSaving
+      message="Could not save appointment."
+      onClose={action("onClose")}
+    />
+  ))
   .add("Error", () => (
     <Error
       message="Could not delete appointment."
