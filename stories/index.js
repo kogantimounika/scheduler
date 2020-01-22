@@ -18,6 +18,8 @@ import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Saving from "components/Appointment/Saving";
 import ErrorSaving from "components/Appointment/ErrorSaving";
+import Form from "components/Appointment/Form";
+
 
 
 
@@ -179,5 +181,21 @@ storiesOf("InterviewerListItem", module)
     <Error
       message="Could not delete appointment."
       onClose={action("onClose")}
+    />
+  ))
+  .add("Edit", () => (
+    <Form 
+    name="Mounika"
+    interviewers={interviewers}
+    interviewer={4}
+    onSave={action("onSave")}
+    onCancel={action("onCancel")}
+    />
+  ))
+  .add("Create", () => (
+    <Form
+    interviewers={interviewers}
+    onSave={action("onSave")}
+    onCancel={action("onCancel")}
     />
   ))
