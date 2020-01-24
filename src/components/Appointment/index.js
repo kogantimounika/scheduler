@@ -5,7 +5,6 @@ import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
 import Status from "components/Appointment/Status";
 import Confirm from "components/Appointment/Confirm";
-// import ErrorSaving from "components/Appointment/ErrorSaving";
 import Error from "components/Appointment/Error";
 import useVisualMode  from "hooks/useVisualMode";
 import "components/Appointment/styles.scss";
