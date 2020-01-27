@@ -32,10 +32,10 @@ function reducer(state, action) {
       return{...state, interviewersDay: result}
     case UPDATE_SPOTS:
     const dayId = findDayByAppointment(action.id, state);
-    const aptIds = state.days[dayId].appointments;
+    const aptId = state.days[dayId].appointments;
       let newSpots = 0;
-        for (let i = 0; i < aptIds.length; i++) {
-          if (state.appointments[aptIds[i]].interview === null) {
+        for (let i = 0; i < aptId.length; i++) {
+          if (!state.appointments[aptId[i]].interview) {
             newSpots += 1;
           }
         }
@@ -71,6 +71,7 @@ export default function useApplicationData() {
     dispatch({ type: SET_DAY, value: day })
   };
 
+// Booking Interview
 
   function bookInterview(id, interview) {
     return axios.put(`/api/appointments/${id}`, { interview })
@@ -78,6 +79,7 @@ export default function useApplicationData() {
     .then(() => dispatch({ type: UPDATE_SPOTS, id: id }))
   };
 
+// function To cancel an interview
 
   function cancelInterview(id,interview) {
     return axios.delete(`/api/appointments/${id}`, { interview :  null})
@@ -85,6 +87,7 @@ export default function useApplicationData() {
     .then(() => {dispatch({ type: UPDATE_SPOTS, id: id })})
   };
 
+// to connect to an api
 
   useEffect(() => {
     const days = axios.get("http://localhost:8001/api/days");
