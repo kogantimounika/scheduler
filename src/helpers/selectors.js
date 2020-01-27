@@ -34,3 +34,14 @@ export const getInterviewersForDay = (state, day) => {
   });
   return interviewer;
 };
+
+
+export function findDayByAppointment(id, state) {
+  for (let i = 0; i < state.days.length; i++) {
+    for(let a of state.days[i].appointments) {
+      if (id === a) {
+        return i;
+      }
+    }
+  }
+};
