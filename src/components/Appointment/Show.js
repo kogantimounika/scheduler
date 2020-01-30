@@ -1,7 +1,6 @@
 import React from "react";
 
 import "components/Appointment/styles.scss";
-// import InterviewerList from "components/InterviewerList";
 
 export default function Show(props) {
   return(
