@@ -1,5 +1,4 @@
 import React from "react";
-import { isModuleSpecifier } from "@babel/types";
 import "components/DayListItem.scss";
 import classnames from 'classnames';
 
