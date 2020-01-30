@@ -5,8 +5,6 @@ import "components/Application.scss";
 import { getAppointmentsForDay, getInterview } from "../helpers/selectors";
 import useApplicationData  from "hooks/useApplicationData"
 
-
-
 export default function Application(props) {
 
   const {
@@ -56,7 +54,6 @@ export default function Application(props) {
       </section>
      </main>
   );
-  
 }
 
 
