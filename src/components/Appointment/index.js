@@ -10,8 +10,6 @@ import useVisualMode  from "hooks/useVisualMode";
 import "components/Appointment/styles.scss";
 
 
-
-
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -40,7 +38,6 @@ export default function Appointment(props) {
     <Header time={props.time} />
     {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
 
-
     {mode === SHOW && (
     <Show
     student={props.interview.student}
@@ -49,7 +46,6 @@ export default function Appointment(props) {
     onEdit= {() => transition(EDIT)}
     />
     )}
-
 
     {mode === CONFIRM && ( 
     <Confirm
@@ -65,9 +61,7 @@ export default function Appointment(props) {
   />
   )}
 
-
     {mode === DELETING && <Status message="Deleting" />}
-
 
     {mode === EDIT && ( <Form
     interviewer = {props.interview.interviewer.id}
@@ -79,10 +73,8 @@ export default function Appointment(props) {
       .then(() => transition(SHOW))
       .catch(error => transition(ERROR_DELETE));
     }}
-    onCancel={() => back()}
-    />
+    onCancel={() => back()} />
     )} 
-    
 
     {mode === CREATE && ( <Form
     interviewers = {props.interviewersDay}
@@ -92,13 +84,12 @@ export default function Appointment(props) {
       .then(() => transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
     }}
-    onCancel={() => back()}
-    />
+    onCancel={() => back()} />
     )} 
+
     {mode === SAVING && <Status message="Saving" />}
     {mode === ERROR_SAVE && (
     <Error message = "Could not save appointment" onClose ={() => back()}/>
-
     )}
 
     {mode === ERROR_DELETE && (
