@@ -47,7 +47,7 @@ export default function Appointment(props) {
     />
     )}
 
-    {mode === CONFIRM && ( 
+    {mode === CONFIRM && (
     <Confirm
     onCancel={() => transition(SHOW)}
     onConfirm={() => {
@@ -76,14 +76,21 @@ export default function Appointment(props) {
     onCancel={() => back()} />
     )} 
 
-    {mode === CREATE && ( <Form
+    {mode === CREATE && ( 
+    <Form
+    
     interviewers = {props.interviewersDay}
     onSave={(name, interviewer) => {
       transition(SAVING);
+      if(interviewer) {
       props.bookInterview(props.id,save(name, interviewer))
       .then(() => transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
-    }}
+    
+  } else {
+    transition(ERROR_SAVE)
+  }
+}}
     onCancel={() => back()} />
     )} 
 
